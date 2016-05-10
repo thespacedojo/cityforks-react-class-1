@@ -10,4 +10,4 @@ export const renderRoutes = () => (
       <IndexRoute component={ Places } />
     </Route>
   </Router>
-  );
+);
