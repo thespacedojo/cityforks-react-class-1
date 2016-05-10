@@ -9,7 +9,7 @@ const LeafletMap = ({loc, places}) => (
     />
     {places.map(function(place) {
       return (
-        <Marker position={[place.geometry.location.lat,place.geometry.location.lng]}>
+        <Marker key={place._id} position={[place.geometry.location.lat,place.geometry.location.lng]}>
           <Popup>
             <span>{place.name}</span>
           </Popup>

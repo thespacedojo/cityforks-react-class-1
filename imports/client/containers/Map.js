@@ -1,6 +1,7 @@
 import React from 'react'
 import Tracker from 'tracker-component';
 import { IndexLink, Link } from 'react-router';
+import Footer from '/imports/client/layout/footer.js';
 import Places from '/imports/collections/Places.js';
 
 class MapContainer extends Tracker.Component {
@@ -30,6 +31,7 @@ class MapContainer extends Tracker.Component {
           {React.cloneElement(this.props.children, {loc: this.state.currentLocation, places: this.state.places})}
         </div>
 
+        <Footer />
       </div>
     )
   }
