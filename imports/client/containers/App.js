@@ -6,19 +6,26 @@ import Places from '/imports/collections/Places.js';
 class AppContainer extends Tracker.Component {
   constructor() {
     super();
+    this.mapChange = this.mapChange.bind(this);
+    this.setState({fetchingData: false});
     this.autorun(() => {
       const currentLocation = Geolocation.latLng() || { lat: 39.1007, lng: -84.5091}
       this.subscribe('placesNearby', currentLocation);
-      this.setState({fetchingData: true});
-      Meteor.call('places/fetch', currentLocation, function(err, res) {this.setState({fetchingData: false})});
+      if (!this.state.fetchingData) {
+        this.setState({fetchingData: true});
+        Meteor.call('places/fetch', currentLocation, (err, res) => {this.setState({fetchingData: false})});
+      }
       this.setState({currentLocation});
       const places = Places.find().fetch();
       this.setState({places});
     });
   }
-  mapChange() {
-    loc = {lat: this.getCenter().lat(), lng: this.getCenter().lng()};
-    Meteor.call('places/fetch', loc);
+  mapChange(map) {
+    if (!this.state.fetchingData) {
+      currentLocation = map.getCenter();
+      this.setState({fetchingData: true});
+      Meteor.call('places/fetch', currentLocation, (err, res) => {this.setState({fetchingData: false})});
+    }
   }
   render() {
     return (
