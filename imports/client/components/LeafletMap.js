@@ -1,8 +1,8 @@
 import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
-const LeafletMap = ({loc, places}) => (
-  <Map center={[loc.lat, loc.lng]} zoom={16} style={{height: "100%"}}>
+const LeafletMap = ({loc, places, mapChanged}) => (
+  <Map center={[loc.lat, loc.lng]} zoom={16} style={{height: "100%"}} onMoveend={mapChanged}>
     <TileLayer
       url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
