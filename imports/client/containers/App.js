@@ -21,7 +21,9 @@ class AppContainer extends Tracker.Component {
         <header className="bar bar-nav">
           <h1 className="title">CityForks</h1>
         </header>
-        {React.cloneElement(this.props.children, {loc: this.state.currentLocation, places: this.state.places})}
+        <div className="content">
+          {React.cloneElement(this.props.children, {loc: this.state.currentLocation, places: this.state.places})}
+        </div>
 
       </div>
     )
