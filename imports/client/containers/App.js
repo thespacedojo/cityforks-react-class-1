@@ -11,10 +11,6 @@ class AppContainer extends Tracker.Component {
     this.autorun(() => {
       const currentLocation = Geolocation.latLng() || { lat: 39.1007, lng: -84.5091}
       this.subscribe('placesNearby', currentLocation);
-      if (!this.state.fetchingData) {
-        this.setState({fetchingData: true});
-        Meteor.call('places/fetch', currentLocation, (err, res) => {this.setState({fetchingData: false})});
-      }
       this.setState({currentLocation});
       const places = Places.find().fetch();
       this.setState({places});
@@ -22,7 +18,7 @@ class AppContainer extends Tracker.Component {
   }
   mapChange(map) {
     if (!this.state.fetchingData) {
-      currentLocation = map.getCenter();
+      currentLocation = map.target.getCenter();
       this.setState({fetchingData: true});
       Meteor.call('places/fetch', currentLocation, (err, res) => {this.setState({fetchingData: false})});
     }
