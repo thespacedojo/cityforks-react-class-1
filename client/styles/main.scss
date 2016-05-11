@@ -1,0 +1,63 @@
+/**
+ * Custom App Styles
+ *
+ * Will override the base Ratchet
+ * styles since main.css loads last.
+ */
+
+/** Imports & Variables
+ ---------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+$font-stack: 'Montserrat', sans-serif;
+$red: #E72E1F;
+
+
+
+
+/** Document-Level Styles
+---------------------------------------------------------*/
+body {
+  font-family: $font-stack;
+}
+
+
+/** Title Bar(s)
+---------------------------------------------------------*/
+.bar-nav {
+    height: 55px;
+
+    &.red {
+        background: $red;
+        color: #FFF;
+    }
+
+    .logo {
+        position: relative;
+        top: 12px;
+        max-height: 33px;
+    }
+}
+
+.bar-header-secondary {
+    background: #F8F8F8;
+}
+
+/** Ratchet Overrides
+---------------------------------------------------------*/
+.bar-nav ~ .content {
+    padding-top: 55px;
+}
+
+.bar-header-secondary ~ .content {
+  padding-top: 100px;
+}
+
+.bar {
+    border: 0 !important;
+    box-shadow: none !important;
+    &.bar-header-secondary { top: 55px !important; }
+}
+
+ul.table-view {
+    border-top: 0;
+}

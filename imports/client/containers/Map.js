@@ -34,8 +34,8 @@ class MapContainer extends Tracker.Component {
     return (
       <div className="appContainer">
 
-        <header className="bar bar-nav">
-          <h1 className="title">CityForks</h1>
+        <header className="red bar bar-nav">
+          <div className="h1 title"><img src={"/images/cityforks-03.png"} className="logo" alt="CityForks" /></div>
         </header>
         <div className="content">
           {React.cloneElement(this.props.children, {loc: this.state.currentLocation, places: this.state.places, mapChanged: this.mapChanged})}
